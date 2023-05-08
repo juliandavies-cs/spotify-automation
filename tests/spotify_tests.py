@@ -19,16 +19,17 @@ playlist_songs = [{
 
 class TestSpotify:
     def setup_method(self):
-        self.username = "julian.automation.test@gmail.com"
+        self.email = "julian.automation.test@gmail.com"
         self.password = "Testing1!"
+        self.username = "Automation-Test"
         self.selenium_service = SeleniumService()
         self.main_page = MainPage()
         self.login_page = LoginPage()
         self.test_case = self
 
     def test_login(self):
-        driver = self.selenium_service.openURL("https://open.spotify.com/")
+        self.selenium_service.open_url("https://open.spotify.com/")
         self.main_page.login(self.test_case)
-        self.login_page.login(self.test_case, self.username, self.password)
-        time.sleep(5)
+        self.login_page.login(self.test_case, self.email, self.password)
+        self.main_page.verify_successful_login(self.test_case, self.username)
     

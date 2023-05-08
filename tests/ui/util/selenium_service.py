@@ -7,7 +7,7 @@ class SeleniumService:
     def __init__(self):
         self.driver = webdriver.Chrome()
 
-    def openURL(self, url):
+    def open_url(self, url):
         self.driver.get(url)
         self.driver.maximize_window()
         return self.driver
