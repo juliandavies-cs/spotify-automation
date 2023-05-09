@@ -12,6 +12,9 @@ class SeleniumService:
         self.driver.maximize_window()
         return self.driver
     
+    def close(self):
+        self.driver.close()
+        
     def wait_until_located(self, locator, locator_type=By.XPATH):
         return WebDriverWait(self.driver, 10).until(
             EC.presence_of_element_located((locator_type, locator))
