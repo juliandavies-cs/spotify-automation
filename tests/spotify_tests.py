@@ -17,7 +17,7 @@ class TestSpotify:
         self.selenium_service = SeleniumService()
         self.main_page = MainPage()
         self.login_page = LoginPage()
-        # self.playlist_page = PlaylistPage()
+        self.playlist_page = PlaylistPage()
         self.side_bar_service = SideBar()
 
     def test_login(self):
@@ -42,7 +42,13 @@ class TestSpotify:
         self.main_page.create_playlist(self.test_case)
         self.side_bar_service.verify_playlist_created(self.test_case)
         self.side_bar_service.click_search(self.test_case)
-        time.sleep(5)
+
+        self.side_bar_service.click_playlist(self.test_case)
 
         """ WIP """
+        
+        
+        self.playlist_page.delete_playlist(self.test_case)
+        time.sleep(5)
+
     

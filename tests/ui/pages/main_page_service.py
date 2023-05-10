@@ -6,6 +6,7 @@ class MainPage:
         self.logged_in_user_name_locator= "//span[@data-testid='user-widget-name']"
         self.create_playlist_button_locator = "//span[text()='Create playlist']/.."
         self.search_bar_locator = "//input[@data-testid='search-input']"
+        self.delete_playlist_button_locator = "//span[text()='Delete']/.."
 
     def login(self, test_case):
         login_button = test_case.selenium_service.wait_until_located(self.login_button_locator)
@@ -21,6 +22,10 @@ class MainPage:
     def create_playlist(self, test_case):
         create_playlist_button = test_case.selenium_service.wait_until_located(self.create_playlist_button_locator)
         create_playlist_button.click()
+
+    def delete_playlist(self, test_case):
+        delete_playlist_button = test_case.selenium_service.wait_until_located(self.delete_playlist_button_locator)
+        delete_playlist_button.click()
 
     def search_for_song(self, test_case, song):
         self.search_for_song(test_case, song)
