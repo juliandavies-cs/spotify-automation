@@ -1,4 +1,5 @@
 import pytest
+import time
 
 class PlaylistPage:
     def __init__(self):
@@ -6,6 +7,7 @@ class PlaylistPage:
         self.edit_playlist_name_input_locator = "//input[@data-testid='playlist-edit-details-name-input']"
         self.edit_playlist_save_btn_locator = "//button[@data-testid='playlist-edit-details-save-button']"
 
+    """UNUSED"""
     def rename_playlist(self, test_case, playlist_name):
         playlist_name_btn = test_case.selenium_service.wait_until_located(self.playlist_name_btn_locator)
         playlist_name_btn.click()

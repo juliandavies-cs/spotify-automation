@@ -17,7 +17,7 @@ class TestSpotify:
         self.selenium_service = SeleniumService()
         self.main_page = MainPage()
         self.login_page = LoginPage()
-        self.playlist_page = PlaylistPage()
+        # self.playlist_page = PlaylistPage()
         self.side_bar_service = SideBar()
 
     def test_login(self):
@@ -31,7 +31,6 @@ class TestSpotify:
     @pytest.mark.slow
     def test_create_playlist(self):
         """ Verify a playlist can be creating given some songs """
-        playlist_name = "Julian's Favs Mashup Playlist"
         playlist_songs = [{
             "title": "Baby", 
             "artist": "Justin Bieber"
@@ -40,8 +39,10 @@ class TestSpotify:
         self.selenium_service.open_url(self.url)
         self.main_page.login(self.test_case)
         self.login_page.login(self.test_case, self.email, self.password)
-        self.main_page.create_playlist(self.test_case, playlist_name)
+        self.main_page.create_playlist(self.test_case)
+        self.side_bar_service.verify_playlist_created(self.test_case)
         self.side_bar_service.click_search(self.test_case)
+        time.sleep(5)
 
         """ WIP """
     
