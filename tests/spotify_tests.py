@@ -9,23 +9,24 @@ from ui.util.selenium_service import SeleniumService
 
 class TestSpotify:
     def setup_method(self):
-        self.test_case = self
-        self.email = "julian.automation.test@gmail.com"
-        self.password = "Testing1!"
-        self.username = "Automation-Test"
-        self.url = "https://open.spotify.com/"
         self.selenium_service = SeleniumService()
         self.main_page = MainPage()
         self.login_page = LoginPage()
         self.playlist_page = PlaylistPage()
         self.side_bar_service = SideBar()
+    
+        self.email = "julian.automation.test@gmail.com"
+        self.password = "Testing1!"
+        self.username = "Automation-Test"
+        self.url = "https://open.spotify.com/"
 
     def test_login(self):
         """ Verify user can login """
+
         self.selenium_service.open_url(self.url)
-        self.main_page.login(self.test_case)
-        self.login_page.login(self.test_case, self.email, self.password)
-        self.main_page.verify_successful_login(self.test_case, self.username)
+        self.main_page.login()
+        self.login_page.login(self.email, self.password)
+        self.main_page.verify_successful_login(self.username)
         self.selenium_service.close()
 
     @pytest.mark.slow
@@ -47,16 +48,16 @@ class TestSpotify:
         ]
 
         self.selenium_service.open_url(self.url)
-        self.main_page.login(self.test_case)
-        self.login_page.login(self.test_case, self.email, self.password)
-        self.main_page.create_playlist(self.test_case)
-        self.side_bar_service.verify_playlist_created(self.test_case)
+        self.main_page.login()
+        self.login_page.login(self.email, self.password)
+        self.main_page.create_playlist()
+        self.side_bar_service.verify_playlist_created()
 
         for song in playlist_songs:
-            self.main_page.add_song(self.test_case, song)
+            self.main_page.add_song(song)
 
-        self.side_bar_service.click_playlist(self.test_case)
-        self.playlist_page.verify_songs_added(self.test_case, playlist_songs)
+        self.side_bar_service.click_playlist()
+        self.playlist_page.verify_songs_added(playlist_songs)
 
         # cleanup
-        self.playlist_page.delete_playlist(self.test_case)
+        self.playlist_page.delete_playlist()
