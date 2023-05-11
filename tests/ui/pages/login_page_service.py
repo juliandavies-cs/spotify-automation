@@ -1,5 +1,6 @@
 from ui.util.selenium_service import SeleniumService
 
+
 class LoginPage:
     def __init__(self):
         self.selenium_service = SeleniumService()

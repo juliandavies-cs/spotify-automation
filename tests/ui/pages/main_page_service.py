@@ -1,5 +1,4 @@
 import pytest
-
 from selenium.webdriver.common.keys import Keys
 from ui.util.selenium_service import SeleniumService
 from ui.util.side_bar_service import SideBar
@@ -12,15 +11,21 @@ class MainPage:
         self.side_bar_service = SideBar()
 
         self.login_button_locator = "//button[@data-testid='login-button']"
-        self.logged_in_user_name_locator= "//span[@data-testid='user-widget-name']"
-        self.create_playlist_button_locator = "//span[text()='Create playlist']/.."
+        self.logged_in_user_name_locator = \
+            "//span[@data-testid='user-widget-name']"
+        self.create_playlist_button_locator = \
+            "//span[text()='Create playlist']/.."
         self.search_bar_locator = "//input[@data-testid='search-input']"
         self.delete_playlist_button_locator = "//span[text()='Delete']/.."
-        self.first_song_title_locator = "//div[@aria-rowindex='1']/div/div/div[2]/a/div"
-        self.first_song_artist_locator = "//div[@aria-rowindex='1']/div/div/div[2]/span/a"
-        self.first_song_options_locator = "//div[@aria-rowindex='1']/div/div[2]/button[2]"
+        self.first_song_title_locator = \
+            "//div[@aria-rowindex='1']/div/div/div[2]/a/div"
+        self.first_song_artist_locator = \
+            "//div[@aria-rowindex='1']/div/div/div[2]/span/a"
+        self.first_song_options_locator = \
+            "//div[@aria-rowindex='1']/div/div[2]/button[2]"
         self.add_to_playlist_locator = "//span[text()='Add to playlist']/.."
-        self.add_to_playlist_btn_locator = "//li/button/span[text()='My Playlist #1']/.."
+        self.add_to_playlist_btn_locator = \
+            "//li/button/span[text()='My Playlist #1']/.."
 
     def login(self):
         login_button = self.selenium_service.wait_until_located(

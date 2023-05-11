@@ -1,10 +1,9 @@
 import pytest
-
 from ui.pages.login_page_service import LoginPage
 from ui.pages.main_page_service import MainPage
 from ui.pages.playlist_page_service import PlaylistPage
-from ui.util.side_bar_service import SideBar
 from ui.util.selenium_service import SeleniumService
+from ui.util.side_bar_service import SideBar
 
 
 class TestSpotify:
@@ -14,7 +13,7 @@ class TestSpotify:
         self.login_page = LoginPage()
         self.playlist_page = PlaylistPage()
         self.side_bar_service = SideBar()
-    
+
         self.email = "julian.automation.test@gmail.com"
         self.password = "Testing1!"
         self.username = "Automation-Test"
