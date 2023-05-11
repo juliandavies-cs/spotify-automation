@@ -1,4 +1,3 @@
-import time
 import pytest
 
 from ui.pages.login_page_service import LoginPage
@@ -6,6 +5,7 @@ from ui.pages.main_page_service import MainPage
 from ui.pages.playlist_page_service import PlaylistPage
 from ui.util.side_bar_service import SideBar
 from ui.util.selenium_service import SeleniumService
+
 
 class TestSpotify:
     def setup_method(self):
@@ -33,16 +33,16 @@ class TestSpotify:
         """ Verify a playlist can be creating given some songs """
         playlist_songs = [
             {
-            "title": "Alive", 
-            "artist": "The Scarlet Opera"
+                "title": "Alive",
+                "artist": "The Scarlet Opera"
             },
             {
-            "title": "I Don't Wanna Know", 
-            "artist": "Knox"
+                "title": "I Don't Wanna Know",
+                "artist": "Knox"
             },
             {
-            "title": "Joe", 
-            "artist": "Luke Combs"
+                "title": "Joe",
+                "artist": "Luke Combs"
             }
         ]
 
@@ -54,13 +54,9 @@ class TestSpotify:
 
         for song in playlist_songs:
             self.main_page.add_song(self.test_case, song)
-        
+
         self.side_bar_service.click_playlist(self.test_case)
         self.playlist_page.verify_songs_added(self.test_case, playlist_songs)
 
-        time.sleep(5)
-
         # cleanup
         self.playlist_page.delete_playlist(self.test_case)
-
-    
