@@ -31,24 +31,36 @@ class TestSpotify:
     @pytest.mark.slow
     def test_create_playlist(self):
         """ Verify a playlist can be creating given some songs """
-        playlist_songs = [{
-            "title": "Baby", 
-            "artist": "Justin Bieber"
-        }]
+        playlist_songs = [
+            {
+            "title": "Alive", 
+            "artist": "The Scarlet Opera"
+            },
+            {
+            "title": "I Don't Wanna Know", 
+            "artist": "Knox"
+            },
+            {
+            "title": "Joe", 
+            "artist": "Luke Combs"
+            }
+        ]
 
         self.selenium_service.open_url(self.url)
         self.main_page.login(self.test_case)
         self.login_page.login(self.test_case, self.email, self.password)
         self.main_page.create_playlist(self.test_case)
         self.side_bar_service.verify_playlist_created(self.test_case)
-        self.side_bar_service.click_search(self.test_case)
 
+        for song in playlist_songs:
+            self.main_page.add_song(self.test_case, song)
+        
         self.side_bar_service.click_playlist(self.test_case)
+        self.playlist_page.verify_songs_added(self.test_case, playlist_songs)
 
-        """ WIP """
-        
-        
-        self.playlist_page.delete_playlist(self.test_case)
         time.sleep(5)
+
+        # cleanup
+        self.playlist_page.delete_playlist(self.test_case)
 
     

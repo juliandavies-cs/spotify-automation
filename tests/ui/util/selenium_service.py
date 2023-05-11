@@ -2,6 +2,7 @@ from selenium import webdriver
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.wait import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
+from selenium.webdriver.common.action_chains import ActionChains
 
 class SeleniumService:
     def __init__(self):
@@ -27,3 +28,8 @@ class SeleniumService:
 
     def find_element(self, locator, locator_type=By.XPATH):
         return self.driver.find_element(locator_type, locator)
+    
+    def hover_over_element(self, locator, locator_type=By.XPATH):
+        a = ActionChains(self.driver)
+        element = self.find_element(locator, locator_type)
+        a.move_to_element(element).perform()
