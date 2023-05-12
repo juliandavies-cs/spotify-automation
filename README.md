@@ -1,6 +1,7 @@
 # Spotify Automation
 
 Spotify Automation is a testing implementation of the website spotify.
+
 Tests are run with Selenium using Python
 
 ## Installation
